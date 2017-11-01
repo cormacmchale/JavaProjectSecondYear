@@ -29,9 +29,16 @@ public class RunGame extends JFrameHandling {
 					   
 					   fight(playerCharacter, enemyCharacter);
 					   
+					   System.out.println("Is it finished");
  
 	      
 	   }
+	
+	   
+	   
+	   
+	   
+	   
 	   
 	   public static void fight(wizard playerCharacter, goblin enemyCharacter)
 	   {
@@ -39,13 +46,15 @@ public class RunGame extends JFrameHandling {
 		    int damageTaken;
 		    int damageDealt;
 		    char attackChoice;
+		    boolean fighting = true;
 		    
-		   while(playerCharacter.hitPoints >=0)
+		    
+		   while(playerCharacter.hitPoints >=0 && fighting)
 		   {						   
 						       
-			   //System.out.println("Enter damage taken: ");
-		       //damageTaken = console.nextInt();
-		       //takeDamage(playerCharacter, damageTaken);
+			   System.out.println("Enter damage taken: ");
+		       damageTaken = console.nextInt();
+		       takeDamage(playerCharacter, damageTaken);
 		       System.out.println("Choose A/ttack or S/pell: ");
 		       attackChoice = console.next().charAt(0);
 		       if (attackChoice == 'A' || attackChoice == 'a')
@@ -56,15 +65,14 @@ public class RunGame extends JFrameHandling {
                     if(enemyCharacter.hitPoints<=0)
                     {
                     	enemyDefeated(enemyCharacter);
-                
+                        fighting = false;
                     }
                   
-		       }
-		       
+		       }		       
 			   						 					       
-		       }
+		    }
 		  					   
-	 	   playerDied(playerCharacter); 		   
+	 	   //playerDied(playerCharacter); 		   
 		   
 	   }
 	} 
