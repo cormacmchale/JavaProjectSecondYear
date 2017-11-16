@@ -9,9 +9,11 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 public class JFrameHandling extends character {
-	
+	static JFrame wizardAliveFrame;
 	static JFrame goblinAliveFrame;
 	static JLabel goblinInfo;
+	static JLabel wizardInfo;
+	
 	
     public static void createWindowGoblin(goblin Enemy) {
     	   
@@ -80,47 +82,47 @@ public class JFrameHandling extends character {
   	   
 
         //Create and set up the window. 
-        JFrame frame = new JFrame("Your Hero");
-        frame.setLayout(new FlowLayout());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+    	wizardAliveFrame = new JFrame("Your Hero");
+    	wizardAliveFrame.setLayout(new FlowLayout());
+    	wizardAliveFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 
          //JLabel textLabel = new JLabel("You Have Selected The Wizard!!", SwingConstants.CENTER);
-         JLabel textLabel2 = new JLabel(Player.display(), SwingConstants.CENTER); 
-         textLabel2.setPreferredSize(new Dimension(300, 100)); 
+    	wizardInfo = new JLabel(Player.display(), SwingConstants.CENTER); 
+    	wizardInfo.setPreferredSize(new Dimension(300, 100)); 
         
         //frame.add(new JLabel(new ImageIcon("Path/To/Your/Image.png")));
         
-        frame.add(new JLabel(new ImageIcon("C:/Users/Cormac/Desktop/Java Projects/McHaleCormacJavaProject/images/wizardSprite.png"))); 
+         wizardAliveFrame.add(new JLabel(new ImageIcon("C:/Users/Cormac/Desktop/Java Projects/McHaleCormacJavaProject/images/wizardSprite.png"))); 
         //frame.add(textLabel, BorderLayout.CENTER);
-        frame.add(textLabel2);
+         wizardAliveFrame.add(wizardInfo);
         //Display the window. 
-        frame.setLocation(250,250); 
-        frame.pack();
-        frame.setVisible(true);
-        frame.setAlwaysOnTop (true);
+         wizardAliveFrame.setLocation(250,250); 
+         wizardAliveFrame.pack();
+         wizardAliveFrame.setVisible(true);
+         wizardAliveFrame.setAlwaysOnTop (true);
      } 
     
     public static void playerDied(wizard Player) {
     	  
         //Create and set up the window. 
-        JFrame frame = new JFrame("Your Hero");
-        frame.setLayout(new FlowLayout());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        //JFrame frame = new JFrame("Your Hero");
+    	wizardAliveFrame.setLayout(new FlowLayout());
+    	wizardAliveFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 
          //JLabel textLabel = new JLabel("You Have Selected The Wizard!!", SwingConstants.CENTER);
-         JLabel textLabel2 = new JLabel("Hero Has Fallen!!", SwingConstants.CENTER); 
-         textLabel2.setPreferredSize(new Dimension(300, 100)); 
+    	wizardInfo = new JLabel("Hero Has Fallen!!", SwingConstants.CENTER); 
+    	wizardInfo.setPreferredSize(new Dimension(300, 100)); 
         
         //frame.add(new JLabel(new ImageIcon("Path/To/Your/Image.png")));
         
-        frame.add(new JLabel(new ImageIcon("C:/Users/Cormac/Desktop/Java Projects/McHaleCormacJavaProject/images/death.gif"))); 
+         wizardAliveFrame.add(new JLabel(new ImageIcon("C:/Users/Cormac/Desktop/Java Projects/McHaleCormacJavaProject/images/death.gif"))); 
         //frame.add(textLabel, BorderLayout.CENTER);
-        frame.add(textLabel2);
+         wizardAliveFrame.add(wizardInfo);
         //Display the window. 
-        frame.setLocation(250,250); 
-        frame.pack();
-        frame.setVisible(true); 
-        frame.setAlwaysOnTop (true);
+         wizardAliveFrame.setLocation(250,250); 
+         wizardAliveFrame.pack();
+         wizardAliveFrame.setVisible(true); 
+         wizardAliveFrame.setAlwaysOnTop (true);
   	  
      } 
     
@@ -134,24 +136,25 @@ public class JFrameHandling extends character {
     	  else
     	  {
           //Create and set up the window. 
-          JFrame frame = new JFrame("Your Hero");
-          frame.setLayout(new FlowLayout());
-          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+          //JFrame frame = new JFrame("Your Hero");
+    		  wizardAliveFrame.remove(wizardInfo);
+    		  wizardAliveFrame.setLayout(new FlowLayout());
+    		  wizardAliveFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 
            //JLabel textLabel = new JLabel("You Have Selected The Wizard!!", SwingConstants.CENTER);
-           JLabel textLabel2 = new JLabel(Player.display(), SwingConstants.CENTER); 
-           textLabel2.setPreferredSize(new Dimension(300, 100)); 
+    		  wizardInfo = new JLabel(Player.display(), SwingConstants.CENTER); 
+    		  wizardInfo.setPreferredSize(new Dimension(300, 100)); 
           
           //frame.add(new JLabel(new ImageIcon("Path/To/Your/Image.png")));
           
-          frame.add(new JLabel(new ImageIcon("C:/Users/Cormac/Desktop/Java Projects/McHaleCormacJavaProject/images/wizardSprite.png"))); 
+           //wizardAliveFrame.add(new JLabel(new ImageIcon("C:/Users/Cormac/Desktop/Java Projects/McHaleCormacJavaProject/images/wizardSprite.png"))); 
           //frame.add(textLabel, BorderLayout.CENTER);
-          frame.add(textLabel2);
+           wizardAliveFrame.add(wizardInfo);
           //Display the window. 
-          frame.setLocation(250,250); 
-          frame.pack();
-          frame.setVisible(true); 
-          frame.setAlwaysOnTop(true);
+           wizardAliveFrame.setLocation(250,250); 
+           wizardAliveFrame.pack();
+           wizardAliveFrame.setVisible(true); 
+           wizardAliveFrame.setAlwaysOnTop(true);
         	
     	  }
        } 
@@ -161,9 +164,9 @@ public class JFrameHandling extends character {
     public static void enemyDefeated(goblin Enemy) {
   	  
         //Create and set up the window. 
-        JFrame frame = new JFrame("Enemy Defeated");
-        frame.setLayout(new FlowLayout());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        //JFrame frame = new JFrame("Enemy Defeated");
+        goblinAliveFrame.setLayout(new FlowLayout());
+        goblinAliveFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 
          //JLabel textLabel = new JLabel("You Have Selected The Wizard!!", SwingConstants.CENTER);
          JLabel textLabel2 = new JLabel("Goblin Slain!!", SwingConstants.CENTER); 
@@ -171,16 +174,16 @@ public class JFrameHandling extends character {
         
         //frame.add(new JLabel(new ImageIcon("Path/To/Your/Image.png")));
         
-        frame.add(new JLabel(new ImageIcon("C:/Users/Cormac/Desktop/Java Projects/McHaleCormacJavaProject/images/death.gif"))); 
+         goblinAliveFrame.add(new JLabel(new ImageIcon("C:/Users/Cormac/Desktop/Java Projects/McHaleCormacJavaProject/images/death.gif"))); 
         //frame.add(textLabel, BorderLayout.CENTER);
-        frame.add(textLabel2);
+         goblinAliveFrame.add(textLabel2);
 
         //Display the window. 
-        frame.setLocation(1000,250); 
-        frame.pack();
-        frame.setVisible(true);
-        frame.setAlwaysOnTop (true);
-        goblinAliveFrame.setVisible(false);
+         goblinAliveFrame.setLocation(1000,250); 
+         goblinAliveFrame.pack();
+         goblinAliveFrame.setVisible(true);
+         goblinAliveFrame.setAlwaysOnTop (true);
+       // goblinAliveFrame.setVisible(false);
         //w
         
   	  

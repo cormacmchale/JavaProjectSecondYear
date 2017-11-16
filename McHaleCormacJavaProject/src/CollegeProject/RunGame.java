@@ -30,7 +30,7 @@ public class RunGame extends JFrameHandling {
 					   fight(playerCharacter, enemyCharacter);
 					   
 					   System.out.println("Is it finished");
-					   System.out.println("more git hub jazz");
+					   System.out.println("more git hub jazzw");
  
 	      
 	   }
