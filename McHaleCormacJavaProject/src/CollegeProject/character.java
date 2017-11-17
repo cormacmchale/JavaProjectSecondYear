@@ -15,6 +15,7 @@ public abstract class character {
 	public int hitPoints;
 	public int magicPoints;
 
+
 	
 	
 	//a display for character or enemy at anytime during program
@@ -23,6 +24,7 @@ public abstract class character {
 		String s = "";
 		s+= "Hit Points: "+hitPoints+" Magic Points: " + magicPoints +"\n";
 		return s;
-	}    
+	} 
+
 
 }

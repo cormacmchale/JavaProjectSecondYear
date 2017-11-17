@@ -19,14 +19,14 @@ public class goblin extends character {
     //smaller methods for basic action
    public void takeDamage(int damage)
    {
-  	 hitPoints -= damage;
+	   hitPoints -= damage;
    }
    
    public void gameOver()
    {
   	 if(hitPoints <= 0)
   	 {
-  		 System.out.println("Enemy Defeated!!");
+  		 //System.out.println("Enemy Defeated!!");
   		 //System.exit(0); 
   		 
   	 }

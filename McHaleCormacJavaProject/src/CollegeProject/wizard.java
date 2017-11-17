@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 //Player character option.. harder difficulty
-public class wizard extends character implements characterMethods
+public class wizard extends character implements CharacterMethodsItems
 {	
 		//constructor for this player character class
         public wizard()
