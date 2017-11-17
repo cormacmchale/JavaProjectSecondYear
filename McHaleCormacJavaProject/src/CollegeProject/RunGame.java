@@ -45,18 +45,16 @@ public class RunGame extends JFrameHandling {
 								System.out.println("Goblin Defeated! Continue to Level Two? Y/N");
 								continuePlaying = console.next().charAt(0);	
 								}
-								
-								if(continuePlaying == 'Y' || continuePlaying == 'y')
-								{
-								goblinAliveFrame.setVisible(false);
-								}
-								
 								if(playerCharacter.hitPoints<=0)
 								{
 								wizardAliveFrame.setVisible(false);	
 								goblinAliveFrame.setVisible(false);
 								System.out.println("You've been Defeated, Game Over");
 						        }
+								if(continuePlaying == 'Y' || continuePlaying == 'y')
+								{
+								goblinAliveFrame.setVisible(false);
+								}								
 								
 						 }
 
@@ -86,7 +84,7 @@ public class RunGame extends JFrameHandling {
 		       if (attackChoice == 'A' || attackChoice == 'a')
 		       {
 		    	  System.out.println("You attacked the Goblin with a physical attack!");
-		    	  damageDealt = (int)(Math.random()*20);
+		    	  damageDealt = (int)(Math.random()*30);
 		    	  dealDamage(enemyCharacter, damageDealt);
 		    	  System.out.println("You attacked dealing "+damageDealt+ " damage");
     			   goblinRNG = (int)(Math.random()*3);
