@@ -9,14 +9,11 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 //main character class
-public abstract class character {
+public abstract class Character {
 	
 	//variables that apply to every character... user and enemy
 	public int hitPoints;
 	public int magicPoints;
-
-
-	
 	
 	//a display for character or enemy at anytime during program
 	public String display()
