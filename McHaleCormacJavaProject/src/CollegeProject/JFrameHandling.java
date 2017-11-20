@@ -129,6 +129,21 @@ public class JFrameHandling extends Character {
     	 if(Player.magicPoints <=0)
     	 {
     		 System.out.println("Magic Depleted");
+    		 //Create and set up the window. 
+    		 //same process as before
+    		 wizardAliveFrame.remove(wizardAliveImage);
+    		 wizardAliveFrame.remove(wizardInfo);
+    		 wizardAliveFrame.setLayout(new FlowLayout());
+    		 wizardAliveFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+    		 wizardInfo = new JLabel(Player.display(), SwingConstants.CENTER); 
+    		 wizardInfo.setPreferredSize(new Dimension(300, 100));          
+             wizardAliveImage = (new JLabel(new ImageIcon("C:/Users/Cormac/Desktop/Java Projects/McHaleCormacJavaProject/images/wizardTest.png"))); 
+             wizardAliveFrame.add(wizardAliveImage);
+             wizardAliveFrame.add(wizardInfo); 
+             wizardAliveFrame.setLocation(250,250); 
+             wizardAliveFrame.pack();
+             wizardAliveFrame.setVisible(true); 
+             wizardAliveFrame.setAlwaysOnTop(true);
     	 }
     	 else
     	 {

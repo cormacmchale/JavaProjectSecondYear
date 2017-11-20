@@ -80,7 +80,7 @@ public class RunGame extends JFrameHandling
 			  
 	            System.out.println("Choose A/ttack or I/tem: ");
 	            actionChoice = console.next().charAt(0); //choice of attack or item		    	  
-  			    goblinRNG = (int)(Math.random()*3);//rng for deciding if goblin will attack or miss
+  			    goblinRNG = (int)(Math.random()*1);//rng for deciding if goblin will attack or miss
 	   			  if(goblinRNG == 1 && fighting == true)
 	   			  {		
 	   				 
@@ -94,17 +94,19 @@ public class RunGame extends JFrameHandling
 	   			  else
 	   			  {
 	   				  System.out.println("Goblin Missed!");
-	   			  }
+	   				  spawnStartGoblin(enemyCharacter);
+	   			  }//end of if for goblin attack
 
 	            if(actionChoice == 'A' || actionChoice == 'a')
 	              {
-	              
-				  System.out.println("Choose P/hysical attack or S/pell: ");
-			      attackChoice = console.next().charAt(0); //choice of attack or spell
+	            	System.out.println("Choose P/hysical attack or S/pell: ");
+	            	attackChoice = console.next().charAt(0); //choice of attack or spell
 			      if (attackChoice == 'P' || attackChoice == 'p')
 			      {
+			    	  //spawn wizard for attack animation
+			          spawnStartWizard(playerCharacter);
 			    	  System.out.println("You attacked the Goblin with a physical attack!");
-			    	  damageDealt = (int)(Math.random()*1);//random damage for attack
+			    	  damageDealt = (int)(Math.random()*25);//random damage for attack
 			    	  dealDamage(enemyCharacter, damageDealt);//function to deal damage
 			    	  System.out.println("You attacked dealing "+damageDealt+ " damage");
 
@@ -128,7 +130,7 @@ public class RunGame extends JFrameHandling
 			    	   if(playerCharacter.magicPoints > 0)
 			    	   {
 				    	   System.out.println("You Launch a Fireball at the goblin!");
-				    	   damageDealt = (int)(Math.random()*1000);//random damage for attack
+				    	   damageDealt = (int)(Math.random()*1);//random damage for attack
 				    	   dealDamage(enemyCharacter, damageDealt);//function to deal damage
 				    	   useSpell(playerCharacter, 50);
 				    	   System.out.println("Fire spell deals "+damageDealt+ " damage");
@@ -144,37 +146,16 @@ public class RunGame extends JFrameHandling
 			                   playerDied(playerCharacter);
 			                   fighting = false;//end loop and exit function
 			               }
-			    	   }
+			    	   }//end of if for magic points
 			    	   else
 			    	   {
-			    		   System.out.println("Magic Depleted, spell is un-effective!!");
-			    		   goblinRNG = (int)(Math.random()*3);//rng for deciding if goblin will attack or mis
-				   		   if(goblinRNG == 1 && fighting == true)
-				   		   {			   
-				   			   damageTaken = (int)(Math.random()*10);		       
-				   			   takeDamage(playerCharacter, damageTaken);//similar to player attack and damage
-				   			   System.out.println("Goblin attacked dealing "+damageTaken+" damage");
-				   		   }
-				   		   else
-				   		   {
-				   			   System.out.println("Goblin Missed!");
-				   		   }
-				   		   
-				   		   //again check to make sure both character are alive			   		   
-			               if(enemyCharacter.hitPoints<=0)
-			               {
-			            	   enemyDefeated(enemyCharacter);
-			                   fighting = false;//end loop and exit function
-			               }
-			               if(playerCharacter.hitPoints<=0)
-			               {
-			                   playerDied(playerCharacter);
-			                   fighting = false;//end loop and exit function
-			               }
+			    		   System.out.println("Magic depleted, Spell un-effective!!");
+			    		   spawnStartWizard(playerCharacter);
 			    	   }
-	    		   }//end of else if for attack
+			    	 }//end of else if for attack choice
 			      
-               }
+	    		   }//end of else if for action choice
+			                     
 	           else if(actionChoice =='I' || actionChoice == 'i')
 	           {
 	        	   System.out.println("finish item actions in code");
