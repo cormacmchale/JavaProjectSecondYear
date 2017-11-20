@@ -24,6 +24,11 @@ public class Wizard extends Character implements CharacterMethodsItems
       {
     	hitPoints -= damage;
       }
+      //use spell
+      public void fireSpell(int magic)
+      {
+    	magicPoints -= magic;
+      }
       public void gameOver()
       {
     	if(hitPoints <= 0)
