@@ -9,18 +9,22 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 public class JFrameHandling extends Character {
-	//these variable allow changes to be made to j panel content without spawning new windows(bettter flow)
+	//these variable allow changes to be made to j panel content without spawning new windows(better flow)
 	static JFrame wizardAliveFrame;
+	static JFrame knightAliveFrame;
 	static JFrame goblinAliveFrame;
 	static JLabel goblinInfo;
 	static JLabel wizardInfo;
+	static JLabel knightInfo;
 	static JLabel goblinAliveImage;
 	static JLabel goblinDeathImage;
 	static JLabel wizardAliveImage;
 	static JLabel wizardDeathImage;
+	static JLabel knightAliveImage;
+	static JLabel knightDeathImage;
 	   
      // these methods finished
-     public static void createWindowWizard(Wizard Player) 
+	 public static void createWindowWizard(Wizard Player) 
      {  
     	 if(wizardAliveFrame == null)
     	 {
@@ -165,6 +169,65 @@ public class JFrameHandling extends Character {
              wizardAliveFrame.setAlwaysOnTop(true);        	
    	      }  	 
      }
+
+     public static void createWindowKnight(Knight Player)
+     {
+    	 if(knightAliveFrame == null)
+    	 {
+	         //Create and set up the window. 
+    		 knightAliveFrame = new JFrame("Your Hero");
+    		 knightAliveFrame.setLayout(new FlowLayout());
+    		 knightAliveFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+    		 knightInfo = new JLabel(Player.display(), SwingConstants.CENTER); 
+    		 knightInfo.setPreferredSize(new Dimension(300, 100));         
+	         knightAliveImage = (new JLabel(new ImageIcon("images/knightSpawn.png"))); 
+	         knightAliveFrame.add(knightAliveImage);
+	         knightAliveFrame.add(knightInfo);
+	        //Display the window. 
+	         knightAliveFrame.setLocation(250,250); 
+	         knightAliveFrame.pack();
+	         knightAliveFrame.setVisible(true);
+	         knightAliveFrame.setAlwaysOnTop(true);
+    	 }
+    	 else
+    	 {
+    		 knightAliveFrame.remove(knightInfo);
+    		 knightAliveFrame.setLayout(new FlowLayout());
+    		 knightAliveFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+    		 knightInfo = new JLabel(Player.display(), SwingConstants.CENTER); 
+    		 knightInfo.setPreferredSize(new Dimension(300, 100));          
+    		 knightAliveFrame.add(knightInfo); 
+    		 knightAliveFrame.setLocation(250,250); 
+    		 knightAliveFrame.pack();
+    		 knightAliveFrame.setVisible(true); 
+    		 knightAliveFrame.setAlwaysOnTop(true); 
+    	 } 
+     }
+     
+     public static void spawnStartKnight(Knight Player)
+     {
+    	 knightAliveFrame.remove(knightInfo);
+    	 knightAliveFrame.remove(knightAliveImage);
+         //Create and set up the window. 
+    	 //wizardAliveFrame = new JFrame("Your Hero");
+    	 knightAliveFrame.setLayout(new FlowLayout());
+    	 knightAliveFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+    	 knightInfo = new JLabel(Player.display(), SwingConstants.CENTER); 
+    	 knightInfo.setPreferredSize(new Dimension(300, 100));         
+         knightAliveImage = (new JLabel(new ImageIcon("images/knightSpawn.png"))); 
+         knightAliveFrame.add(knightAliveImage);
+         knightAliveFrame.add(knightAliveImage);
+        //Display the window. 
+         knightAliveFrame.setLocation(250,250); 
+         knightAliveFrame.pack();
+         knightAliveFrame.setVisible(true);
+         knightAliveFrame.setAlwaysOnTop(true); 
+     }
+     
+     
+     
+     
+     
      
      public static void createWindowGoblin(Goblin Enemy) 
      {

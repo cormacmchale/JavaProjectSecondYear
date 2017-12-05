@@ -8,11 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-public class Goblin extends Character 
+public class Goblin extends Character implements CharacterItems
 {
 	public Goblin() 
 	{
-		hitPoints = 30;
+		hitPoints = 60;
 		magicPoints = 10;		
 	}	
 	
@@ -31,6 +31,6 @@ public class Goblin extends Character
   		 //System.exit(0);   		 
   	}
   	 
-  }
+    }//end of gameOver
 
 }// end goblin class

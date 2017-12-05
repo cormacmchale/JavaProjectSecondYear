@@ -17,7 +17,7 @@ public class RunGame extends JFrameHandling
 		 final Scanner console = new Scanner (System.in);			
 		 do
 		 {
-		 System.out.println("PLease Choose a charcter: W/Wizard or K/Knight?");
+		 System.out.print("PLease Choose a charcter: W/Wizard or K/Knight? ");
 		 choice= console.next().charAt(0);
 		 if (choice == 'W' || choice =='K')
 		 {
@@ -38,7 +38,7 @@ public class RunGame extends JFrameHandling
 			 System.out.println("A Goblin Appears");
 			 Goblin enemyCharacter = new Goblin();//creates enemy object
 			 createWindowGoblin(enemyCharacter);//spawns enemy					   
-			 fight(playerCharacter, enemyCharacter);//function to run battle
+			 wizardFight(playerCharacter, enemyCharacter);//function to run battle
 					   
 			 	if(enemyCharacter.hitPoints<=0)//make sure code run correctly on exiting the function
 				{
@@ -54,6 +54,7 @@ public class RunGame extends JFrameHandling
 				if(continuePlaying == 'Y' || continuePlaying == 'y')
 				{
 					goblinAliveFrame.setVisible(false);//enemy defeated
+					System.out.println("To be continued");
 				}
 				else if(continuePlaying == 'N' || continuePlaying == 'n')
 				{
@@ -65,10 +66,21 @@ public class RunGame extends JFrameHandling
 				spawnStartWizard(playerCharacter);
 			}// end of if statement for Wizard Battles
 
+			else if(choice == 'K' || choice == 'k')
+			{
+				System.out.println("You've chosen the Knight!");
+				Knight playerCharacter = new Knight();//object created here
+				createWindowKnight(playerCharacter);//spawn knight
+				System.out.println("A Goblin Appears");
+				Goblin enemyCharacter = new Goblin();//creates enemy object
+				createWindowGoblin(enemyCharacter);//spawns enemy					   
+				//knightFight(playerCharacter, enemyCharacter);//function to run battle
+			}// end of if else for Knight battles
+		 
 	  }// end of main where game is being run
 	 
-      //fight now finished- hopefully	  	  	   	   	   
-	  public static void fight(Wizard playerCharacter, Goblin enemyCharacter)
+      //fight now finished	  	  	   	   	   
+	  public static void wizardFight(Wizard playerCharacter, Goblin enemyCharacter)
 	  {
 		  //variable needed plus scanner for inputs
 		  final Scanner console = new Scanner (System.in);
@@ -78,18 +90,18 @@ public class RunGame extends JFrameHandling
 		  int goblinRNG;
 		  char attackChoice;
 		  char actionChoice;
+		  char potionChoice;
 		  boolean fighting = true;
 		  //begin the fight here using boolean to keep fight active
 		  while(fighting)
-		  {
-			  
-	            System.out.println("Choose A/ttack or I/tem: ");
+		  {			  
+	            System.out.print("Choose A/ttack or I/tem: ");
 	            actionChoice = console.next().charAt(0); //choice of attack or item		    	  
   			    goblinRNG = (int)(Math.random()*3);//rng for deciding if goblin will attack or miss
 	   			  if(goblinRNG == 2 && fighting == true || goblinRNG == 3 && fighting == true )
 	   			  {		
 	   				 
-	   				  damageTaken = (int)(Math.random()*10);		       
+	   				  damageTaken = (int)(Math.random()*50);		       
 	   				  takeDamage(playerCharacter, damageTaken);//similar to player attack and damage
 	   				  System.out.println("Goblin attacked dealing "+damageTaken+" damage");
 	   				  goblinAttacks(enemyCharacter);
@@ -103,17 +115,16 @@ public class RunGame extends JFrameHandling
 
 	              if(actionChoice == 'A' || actionChoice == 'a')
 	              {
-	            	System.out.println("Choose P/hysical attack or S/pell: ");
+	            	System.out.print("Choose P/hysical attack or S/pell: ");
 	            	attackChoice = console.next().charAt(0); //choice of attack or spell
 			      if (attackChoice == 'P' || attackChoice == 'p')
 			      {
 			    	  //spawn wizard for attack animation
 			          spawnStartWizard(playerCharacter);
 			    	  System.out.println("You attacked the Goblin with a physical attack!");
-			    	  damageDealt = (int)(Math.random()*25);//random damage for attack
+			    	  damageDealt = (int)(Math.random()*10);//random damage for attack
 			    	  dealDamage(enemyCharacter, damageDealt);//function to deal damage
 			    	  System.out.println("You attacked dealing "+damageDealt+ " damage");
-
 		   			  
 		   			  //again check to make sure both character are alive
 	                  if(enemyCharacter.hitPoints<=0)
@@ -134,7 +145,7 @@ public class RunGame extends JFrameHandling
 			    	   if(playerCharacter.magicPoints > 0)
 			    	   {
 				    	   System.out.println("You Launch a Fireball at the goblin!");
-				    	   damageDealt = (int)(Math.random()*1);//random damage for attack
+				    	   damageDealt = (int)(Math.random()*40);//random damage for attack
 				    	   dealDamage(enemyCharacter, damageDealt);//function to deal damage
 				    	   useSpell(playerCharacter, 50);
 				    	   System.out.println("Fire spell deals "+damageDealt+ " damage");
@@ -162,12 +173,47 @@ public class RunGame extends JFrameHandling
 			                     
 	           else if(actionChoice =='I' || actionChoice == 'i')
 	           {
-	        	   System.out.println("Choose A for magic Potion");
-	        	   System.out.println("Choose B for health Potion");
+	        	   System.out.print("Enter H for Health Potion or M for Magic Potion: ");
+
+	        	   potionChoice = console.next().charAt(0); //choice of Potion
+	        	   if (potionChoice =='H')
+	        	   {
+	        		   if(healthPotion <=0)
+	        		   {
+	        			   System.out.println("No more Health Potions!!");
+	        		   }
+	        		   else
+	        		   {
+	        			   playerCharacter.hitPoints+=playerCharacter.POTION_HEALING;//implementing an interface
+		        		   spawnStartWizard(playerCharacter);//re set the animation of window for battle continuity
+		        		   spawnStartGoblin(enemyCharacter);//re set the animation of window for battle continuity
+		        		   System.out.println("You've healed for 50 HP!");
+		        		   healthPotion--;
+	        		   }//end of if statement to check if you can use health potion..
+	        	   }
+	        	   else if (potionChoice == 'M')
+	        	   {
+	        		   if(magicPotion <=0)
+	        		   {
+	        			   System.out.println("No more Magic Potions!!");
+	        		   }
+	        		   else
+	        		   {
+	        			   playerCharacter.magicPoints+=playerCharacter.POTION_MAGIC;
+		        		   spawnStartWizard(playerCharacter);//re set the animation of window for battle continuity
+		        		   spawnStartGoblin(enemyCharacter);//re set the animation of window for battle continuity
+		        		   System.out.println("You've regained 50 MP!");
+		        		   magicPotion--;
+	        		   }//end of if statement to check if you can use magic potion..
+	        	   }	        	   			        	   
 	           }//end of if for action
 		 }//end of while loop battle		  					   		   
 	  }//end of fight function
+	
+	  public static void knightFight(Knight playerCharacter, Goblin enemyCharacter)
+	  {
 	  
+	  }//end of fight function for Knight
 }//end of public class RunGame 
 
 

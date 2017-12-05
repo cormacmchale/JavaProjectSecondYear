@@ -14,7 +14,9 @@ public abstract class Character {
 	//variables that apply to every character... user and enemy
 	public int hitPoints;
 	public int magicPoints;
-	
+	//items for use
+	public static int magicPotion = 2;
+	public static int healthPotion = 2;
 	//a display for character or enemy at anytime during program
 	public String display()
 	{

@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 //Player character option.. harder difficulty
-public class Wizard extends Character implements CharacterMethodsItems
+public class Wizard extends Character implements CharacterItems
 {	
      //constructor for this player character class
      public Wizard()
@@ -17,8 +17,7 @@ public class Wizard extends Character implements CharacterMethodsItems
          hitPoints = 100;
          magicPoints = 200;
       }
-        
-        
+                
       //smaller methods for basic action
       public void takeDamage(int damage)
       {
