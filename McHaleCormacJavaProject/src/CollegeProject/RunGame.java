@@ -19,7 +19,7 @@ public class RunGame extends JFrameHandling
 		 {
 		 System.out.println("PLease Choose a charcter: W/Wizard or K/Knight?");
 		 choice= console.next().charAt(0);
-		 if (choice == 'W' || choice =='K' || choice == 'R')
+		 if (choice == 'W' || choice =='K')
 		 {
 			 correctChoice = false;//boolean
 		 }
@@ -55,6 +55,11 @@ public class RunGame extends JFrameHandling
 				{
 					goblinAliveFrame.setVisible(false);//enemy defeated
 				}
+				else if(continuePlaying == 'N' || continuePlaying == 'n')
+				{
+					wizardAliveFrame.setVisible(false);	
+					goblinAliveFrame.setVisible(false);
+				}
 			 //create next enemy for battle
 			 //check you have left battle.. spawn wizard again
 				spawnStartWizard(playerCharacter);
@@ -80,15 +85,14 @@ public class RunGame extends JFrameHandling
 			  
 	            System.out.println("Choose A/ttack or I/tem: ");
 	            actionChoice = console.next().charAt(0); //choice of attack or item		    	  
-  			    goblinRNG = (int)(Math.random()*1);//rng for deciding if goblin will attack or miss
-	   			  if(goblinRNG == 1 && fighting == true)
+  			    goblinRNG = (int)(Math.random()*3);//rng for deciding if goblin will attack or miss
+	   			  if(goblinRNG == 2 && fighting == true || goblinRNG == 3 && fighting == true )
 	   			  {		
 	   				 
 	   				  damageTaken = (int)(Math.random()*10);		       
 	   				  takeDamage(playerCharacter, damageTaken);//similar to player attack and damage
 	   				  System.out.println("Goblin attacked dealing "+damageTaken+" damage");
 	   				  goblinAttacks(enemyCharacter);
-	   				  takeDamage(playerCharacter, 0);
 
 	   			  }
 	   			  else
@@ -97,7 +101,7 @@ public class RunGame extends JFrameHandling
 	   				  spawnStartGoblin(enemyCharacter);
 	   			  }//end of if for goblin attack
 
-	            if(actionChoice == 'A' || actionChoice == 'a')
+	              if(actionChoice == 'A' || actionChoice == 'a')
 	              {
 	            	System.out.println("Choose P/hysical attack or S/pell: ");
 	            	attackChoice = console.next().charAt(0); //choice of attack or spell
@@ -158,7 +162,8 @@ public class RunGame extends JFrameHandling
 			                     
 	           else if(actionChoice =='I' || actionChoice == 'i')
 	           {
-	        	   System.out.println("finish item actions in code");
+	        	   System.out.println("Choose A for magic Potion");
+	        	   System.out.println("Choose B for health Potion");
 	           }//end of if for action
 		 }//end of while loop battle		  					   		   
 	  }//end of fight function
