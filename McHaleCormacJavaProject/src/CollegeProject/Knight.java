@@ -1,16 +1,16 @@
 package CollegeProject;
 
 //PlayerCharacter Option.. Easier Difficulty
-public class Knight extends Character 
+public class Knight extends Character implements CharacterItems
 {
 
 	public int defence;
 	
 	public Knight() //constructor for knight
 	{
-		hitPoints = 150;
+		hitPoints = 200;
 		//magicPoints = 5; knight has no magic points
-		defence = 8;		
+		defence = 15;		
 	}
 	
     //smaller methods for basic action

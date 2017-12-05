@@ -216,7 +216,7 @@ public class JFrameHandling extends Character {
     	 knightInfo.setPreferredSize(new Dimension(300, 100));         
          knightAliveImage = (new JLabel(new ImageIcon("images/knightSpawn.png"))); 
          knightAliveFrame.add(knightAliveImage);
-         knightAliveFrame.add(knightAliveImage);
+         knightAliveFrame.add(knightInfo);
         //Display the window. 
          knightAliveFrame.setLocation(250,250); 
          knightAliveFrame.pack();
@@ -224,11 +224,94 @@ public class JFrameHandling extends Character {
          knightAliveFrame.setAlwaysOnTop(true); 
      }
      
+     public static void spawnStartKnightAttack(Knight Player)
+     {
+    	 knightAliveFrame.remove(knightInfo);
+    	 knightAliveFrame.remove(knightAliveImage);
+         //Create and set up the window. 
+    	 //wizardAliveFrame = new JFrame("Your Hero");
+    	 knightAliveFrame.setLayout(new FlowLayout());
+    	 knightAliveFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+    	 knightInfo = new JLabel(Player.display(), SwingConstants.CENTER); 
+    	 knightInfo.setPreferredSize(new Dimension(300, 100));         
+         knightAliveImage = (new JLabel(new ImageIcon("images/knightSpawnAttack.png"))); 
+         knightAliveFrame.add(knightAliveImage);
+         knightAliveFrame.add(knightInfo);
+        //Display the window. 
+         knightAliveFrame.setLocation(250,250); 
+         knightAliveFrame.pack();
+         knightAliveFrame.setVisible(true);
+         knightAliveFrame.setAlwaysOnTop(true);    	 
+     }
      
+     public static void spawnStartKnightDefend(Knight Player)
+     {
+    	 knightAliveFrame.remove(knightInfo);
+    	 knightAliveFrame.remove(knightAliveImage);
+         //Create and set up the window. 
+    	 //wizardAliveFrame = new JFrame("Your Hero");
+    	 knightAliveFrame.setLayout(new FlowLayout());
+    	 knightAliveFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+    	 knightInfo = new JLabel(Player.display(), SwingConstants.CENTER); 
+    	 knightInfo.setPreferredSize(new Dimension(300, 100));         
+         knightAliveImage = (new JLabel(new ImageIcon("images/knightSpawnDefend.png"))); 
+         knightAliveFrame.add(knightAliveImage);
+         knightAliveFrame.add(knightInfo);
+        //Display the window. 
+         knightAliveFrame.setLocation(250,250); 
+         knightAliveFrame.pack();
+         knightAliveFrame.setVisible(true);
+         knightAliveFrame.setAlwaysOnTop(true); 
+     }
      
+     public static void takeDamageKnight(Knight Player, int hitPoints)
+     {
+	   	  //again use this to check hit points are being used properly
+	   	 Player.takeDamage(hitPoints);
+	   	 if(Player.hitPoints <=0)
+	   	 {
+	   		 System.out.println("Hero Has Fallen!!");
+	   	 }
+	   	 else
+	   	 {
+	   		 //Create and set up the window. 
+	   		 //same process as before
+	   		 knightAliveFrame.remove(knightAliveImage);
+	   		 knightAliveFrame.remove(knightInfo);
+	   		 knightAliveFrame.setLayout(new FlowLayout());
+	   		 knightAliveFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+	   		 knightInfo = new JLabel(Player.display(), SwingConstants.CENTER); 
+	   		 knightInfo.setPreferredSize(new Dimension(300, 100));          
+	         knightAliveImage = (new JLabel(new ImageIcon("images/knightTakeDamage.png"))); 
+	         knightAliveFrame.add(knightAliveImage);
+	         knightAliveFrame.add(knightInfo); 
+	         knightAliveFrame.setLocation(250,250); 
+	         knightAliveFrame.pack();
+	         knightAliveFrame.setVisible(true); 
+	         knightAliveFrame.setAlwaysOnTop(true);        	
+	   	  } 
+     }
      
-     
-     
+     public static void playerDiedKnight(Knight Player)
+     {
+         knightAliveFrame.remove(knightInfo);
+    	 knightAliveFrame.remove(knightAliveImage);
+    	 knightAliveFrame.setLayout(new FlowLayout());
+    	 knightAliveFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+    	 //updated window
+    	 knightInfo = new JLabel("Hero Has Fallen!!", SwingConstants.CENTER); 
+    	 knightInfo.setPreferredSize(new Dimension(300, 100));
+    	 //new image for death/gameover
+         knightDeathImage = (new JLabel(new ImageIcon("images/deathKnight.gif"))); 
+         knightAliveFrame.add(knightInfo);
+         knightAliveFrame.add(knightDeathImage);
+         //Display the window. 
+         knightAliveFrame.setLocation(250,250); 
+         knightAliveFrame.pack();
+         knightAliveFrame.setVisible(true); 
+         knightAliveFrame.setAlwaysOnTop (true); 
+     }
+         
      public static void createWindowGoblin(Goblin Enemy) 
      {
         //Create and set up the window. 
